@@ -24,8 +24,8 @@ sed -i -e "s/###VCENTER###/${VCENTER}/" \
 -e "s/###VCENTER_PASSWD###/${VCENTER_PASSWD}/" \
 -e "s/###VCENTER_DATACENTER###/${VCENTER_DATACENTER}/" \
 -e "s/###VCENTER_CLUSTER###/${VCENTER_CLUSTER}/" \
--e "s/###PORTGROUP###/${2}/" \
--e "s/###CPOD_NAME###/${1}/" \
+-e "s/###SNAPSHOT###/${2}/" \
+-e "s/###CPOD_NAME###/${HEADER}-${1}/" \
 -e "s/###TEMPLATE_FILER###/${TEMPLATE_FILER}/" \
 -e "s/###IP###/${IP}/" \
 -e "s/###ROOT_PASSWD###/${ROOT_PASSWD}/" \

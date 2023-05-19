@@ -24,8 +24,8 @@ sed -i -e "s/###VCENTER###/${VCENTER}/" \
 -e "s/###VCENTER_PASSWD###/${VCENTER_PASSWD}/" \
 -e "s/###VCENTER_DATACENTER###/${VCENTER_DATACENTER}/" \
 -e "s/###VCENTER_CLUSTER###/${VCENTER_CLUSTER}/" \
--e "s/###PORTGROUP###/${2}/" \
--e "s/###CPOD_NAME###/${1}/" \
+-e "s/###SNAPSHOT###/${2}/" \
+-e "s/###CPOD_NAME###/${HEADER}-${1}/" \
 -e "s/###TEMPLATE_FILER###/${TEMPLATE_FILER}/" \
 -e "s/###IP###/${IP}/" \
 -e "s/###ROOT_PASSWD###/${ROOT_PASSWD}/" \
@@ -38,7 +38,7 @@ echo "Removing snapshot for VMs of '${HEADER}-${1}'."
 docker run --rm --dns=${DNS} --entrypoint="/usr/bin/pwsh" -i -v /tmp/scripts:/tmp/scripts vmware/powerclicore:12.4 ${SCRIPT}  
 echo "Touching vsan.out to dirty"
 #this makes refresh the used size calculation
-compute/vsan_objects.sh touch
+./compute/vsan_objects.sh refresh
 
 
 

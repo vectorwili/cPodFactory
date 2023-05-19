@@ -6,7 +6,7 @@ $vcUser = "###VCENTER_ADMIN###"
 $vcPass = '###VCENTER_PASSWD###'
 $Datacenter = "###VCENTER_DATACENTER###"
 $Cluster = "###VCENTER_CLUSTER###"
-$Portgroup = "###PORTGROUP###"
+$Snapshot = "###SNAPSHOT###"
 $cPodName = "###CPOD_NAME###"
 $oldNet = "Dummy"
 $templateFILER = "###TEMPLATE_FILER###"
@@ -26,7 +26,7 @@ Connect-VIServer -Server $Vc -User $vcUser -Password $vcPass
 Stop-VMGuest "*$cPodName*"  -Confirm:$false
  do { $vmstatus = (get-vm -Name "*$cPodName*" ).PowerState ; Start-Sleep -Seconds 5} while ($vmstatus -eq "PoweredOn")
 #create new snapshot
-foreach ($vm in  Get-VM -Name  "*$cPodName*") { New-Snapshot -VM $vm -Name $Portgroup}
+foreach ($vm in  Get-VM -Name  "*$cPodName*") { New-Snapshot -VM $vm -Name $Snapshot}
 #poweron VMs
 Start-VM "*$cPodName*"  -Confirm:$false
 #check if vms powered on
