@@ -156,15 +156,21 @@ snap() {
         A=${1}
         B=${2}
 	C=${3}
-        if [ "${A}" != "" ] && [ "${B}" != "" ]; then
+	echo "A= $A"
+	echo "B= $B"
+	echo "C= $C"
+	read
+        if [  "${B}" != "" ]; then
                 case $A in
 			create)
 				./compute/create_snapshot.sh ${B} ${C}
 				shift
 				shift
+				shift
 				;;
 			list)
 				./compute/list_snapshot.sh ${B}
+				shift
 				shift				
 				;;
 			revert)
@@ -184,7 +190,7 @@ snap() {
 		esac
 			
         else
-                echo "Please specify verb and cPod name."
+                echo "Please cPod name to snapshot"
         fi
 }
 
